@@ -35,7 +35,6 @@ class test_add_group1(unittest.TestCase):
         self.logout(wd)
 
     def logout(self, wd):
-        # logout
         wd.find_element_by_link_text("Logout").click()
         wd.find_element_by_name("pass").click()
         wd.find_element_by_name("pass").send_keys("\\undefined")
@@ -43,13 +42,11 @@ class test_add_group1(unittest.TestCase):
         wd.find_element_by_name("user").send_keys("\\undefined")
 
     def return_to_group_page(self, wd):
-        # return to group page
+
         wd.find_element_by_link_text("group page").click()
 
     def create_group(self, wd, group):
-        # init group creation
         wd.find_element_by_name("new").click()
-        # fill group firm
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
         wd.find_element_by_name("group_name").send_keys(group.name)
@@ -63,13 +60,11 @@ class test_add_group1(unittest.TestCase):
         wd.find_element_by_name("submit").click()
 
     def open_groups_page(self, wd, password):
-        # open groups page
         wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
         wd.find_element_by_link_text("groups").click()
 
     def login(self, wd, username):
-        # login
         wd.find_element_by_name("pass").click()
         wd.find_element_by_name("pass").send_keys("\\undefined")
         wd.find_element_by_name("user").click()
