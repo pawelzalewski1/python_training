@@ -1,3 +1,4 @@
 [
-  "test_add_group1.py::test_add_group1::test_test_add_group1"
+  "test_add_group1.py::test_add_group1::test_add_empty_group1",
+  "test_add_group1.py::test_add_group1::test_add_group1"
 ]
