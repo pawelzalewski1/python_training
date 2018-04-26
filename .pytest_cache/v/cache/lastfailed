@@ -1,6 +1,4 @@
 {
   "new_test.py::new_test::test_new_test": true,
-  "test_add_group.py::test_add_group::test_test_add_group": true,
-  "test_add_group1.py::test_add_empty_group1": true,
-  "test_add_group1.py::test_add_group1": true
+  "test_add_group.py::test_add_group::test_test_add_group": true
 }
