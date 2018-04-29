@@ -32,5 +32,5 @@ class ContactHelper:
         #select first group
         wd.find_element_by_name("selected[]").click()
         # submit deletion
-        wd.find_element_by_name("DeleteSel()").click()
-       
+        wd.find_element_by_css_selector("[value=Delete]")
+
