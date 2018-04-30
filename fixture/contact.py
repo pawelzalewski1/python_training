@@ -14,3 +14,10 @@ class ContactHelper:
         wd.find_element_by_name("firstname").send_keys(contact.first_name)
         # submit group creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+
+    def delete_first_contact(self):
+        wd = self.app.wd
+        # select first group
+        wd.find_element_by_name("selected[]").click()
+        # deletion submit
+        wd.find_element_by_css_selector("[value=Delete]")
