@@ -1,5 +1,3 @@
 {
-  "new_test.py::new_test::test_new_test": true,
-  "test/test_add_contact.py::test_add_contact": true,
-  "test/test_add_contact.py::test_add_empty_contact": true
+  "new_test.py::new_test::test_new_test": true
 }
