@@ -21,3 +21,16 @@ class ContactHelper:
         wd.find_element_by_name("selected[]").click()
         # deletion submit
         wd.find_element_by_css_selector("[value=Delete]")
+
+    def modyfied_contact(self, firstname):
+        wd = self.app.wd
+        # selct contact
+        wd.find_element_by_name("selected[]").click()
+        # edit group
+        if not wd.find_element_by_id("65").is_selected():
+            wd.find_element_by_id("65").click()
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[34]/td[8]/a/img").click()
+        wd.find_element_by_name("firstname").click()
+        wd.find_element_by_name("firstname").clear()
+        wd.find_element_by_name("firstname").send_keys(firstname)
+        wd.find_element_by_name("update").click()

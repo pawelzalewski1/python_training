@@ -39,7 +39,7 @@ class GroupHelper:
     def modyfied_group(self, name, header, footer):
         wd = self.app.wd
         wd.find_element_by_link_text("groups").click()
-        # select first group
+        # select group
         wd.find_element_by_name("selected[]").click()
         #edit group
         wd.find_element_by_name("edit").click()
@@ -60,3 +60,4 @@ class GroupHelper:
     def return_group_page(self):
         wd = self.app.wd
         wd.find_element_by_link_text("group page").click()
+
