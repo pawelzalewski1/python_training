@@ -27,8 +27,9 @@ class ContactHelper:
         wd = self.app.wd
         # select first group
         wd.find_element_by_name("selected[]").click()
-        # deletion submit
-        wd.find_element_by_css_selector("[value=Delete]")
+        # # deletion submit
+        wd.find_element_by_css_selector("[value=Delete]").click()
+        wd.switch_to_alert().accept()
 
     def modyfied_contact(self, firstname):
         wd = self.app.wd
@@ -57,3 +58,7 @@ class ContactHelper:
 
          # submit modyfication
         wd.find_element_by_name("update").click()
+
+    def count(self):
+        wd = self.app.wd
+        return len(wd.find_elements_by_name("selected[]"))

@@ -1,4 +1,5 @@
 {
   "modyfie_contact.py": true,
-  "new_test.py::new_test::test_new_test": true
+  "new_test.py::new_test::test_new_test": true,
+  "u.py::u::test_u": true
 }
