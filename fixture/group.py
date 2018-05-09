@@ -1,4 +1,3 @@
-
 class GroupHelper:
 
     def __init__ (self,app):
@@ -8,7 +7,6 @@ class GroupHelper:
         wd = self.app.wd
         if not (wd.current_url.endswith("/group.php") and len(wd.find_elements_by_name("new"))>0):
             wd.find_element_by_link_text("groups").click()
-        # wd.find_element_by_link_text("groups").click()
 
     def create(self, group):
         wd = self.app.wd
@@ -45,27 +43,6 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
 
-    def modyfied_group(self, name, header, footer):
-        wd = self.app.wd
-        wd.find_element_by_link_text("groups").click()
-        # select group
-        wd.find_element_by_name("selected[]").click()
-        #edit group
-        wd.find_element_by_name("edit").click()
-        # changing
-        wd.find_element_by_name("group_name").click()
-        wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys(name)
-        wd.find_element_by_name("group_header").click()
-        wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys(header)
-        wd.find_element_by_name("group_footer").click()
-        wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys(footer)
-        #update
-        wd.find_element_by_name("update").click()
-        self.return_group_page()
-
     def modify_first_group(self, new_group_data):
         wd = self.app.wd
         self.open_group_page()
@@ -86,4 +63,26 @@ class GroupHelper:
         wd = self.app.wd
         self.open_group_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    # ------------------------------------------------------
+    # def modyfied_group(self, name, header, footer):
+    #     wd = self.app.wd
+    #     wd.find_element_by_link_text("groups").click()
+    #     # select group
+    #     wd.find_element_by_name("selected[]").click()
+    #     #edit group
+    #     wd.find_element_by_name("edit").click()
+    #     # changing
+    #     wd.find_element_by_name("group_name").click()
+    #     wd.find_element_by_name("group_name").clear()
+    #     wd.find_element_by_name("group_name").send_keys(name)
+    #     wd.find_element_by_name("group_header").click()
+    #     wd.find_element_by_name("group_header").clear()
+    #     wd.find_element_by_name("group_header").send_keys(header)
+    #     wd.find_element_by_name("group_footer").click()
+    #     wd.find_element_by_name("group_footer").clear()
+    #     wd.find_element_by_name("group_footer").send_keys(footer)
+    #     #update
+    #     wd.find_element_by_name("update").click()
+    #     self.return_group_page()
 
