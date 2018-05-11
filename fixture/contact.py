@@ -1,3 +1,5 @@
+from model.contact import Contact
+
 class ContactHelper:
 
     def __init__ (self,app):
@@ -64,6 +66,48 @@ class ContactHelper:
     def count(self):
         wd = self.app.wd
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.open_contact_page()
+        contacts = []
+        for element in wd.find_elements_by_name("entry"):
+            first_name = element.find_elements_by_css_selector("td")
+            id = first_name[2].text
+            contacts.append(Contact(first_name, id=id))
+        return contacts
+
+
+        # for element in wd.find_elements_by_css_selector("span.group"):
+        #     text = element.text
+        #     id = element.find_element_by_name("selected[]").get_attribute("value")
+        #     groups.append(Group(name=text, id=id))
+        # return groups
+        #
+        #     cells = element.find_elements_by_css_selector("td")
+        #     #css_selector("tr.entry"):
+        #     cells = element.cells
+        #     cells = element.find_elements_by_css_selector("td")
+        #     #id = element.find_element_by_name("selected[]").get_attribute("value")
+        #     id = element.find_elements_by_css_selector("td").get_attribute("value")
+        #     contacts.append(Contact(name=cells, id=id))
+        # return contacts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     #----------------------------------------------------------------
     # def modyfied_contact(self, firstname):
     #     wd = self.app.wd
