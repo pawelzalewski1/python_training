@@ -1,5 +1,6 @@
 from model.contact import Contact
 
+
 class ContactHelper:
 
     def __init__ (self,app):
@@ -7,7 +8,7 @@ class ContactHelper:
 
     def open_contact_page(self):
         wd = self.app.wd
-        if not (wd.current_url.endswith("edit.php") and len(wd.find_elements_by_name("submit"))>0):
+        if not (wd.current_url.endswith("/") and len(wd.find_elements_by_name("add"))>0):
             wd.find_element_by_link_text("home").click()
         # wd.find_element_by_link_text("home").click()
 
@@ -72,9 +73,9 @@ class ContactHelper:
         self.open_contact_page()
         contacts = []
         for element in wd.find_elements_by_name("entry"):
-            first_name = element.find_elements_by_css_selector("td")
-            id = first_name[2].text
-            contacts.append(Contact(first_name, id=id))
+            firstname = element.find_elements_by_css_selector("td")
+            id = firstname[2].text
+            contacts.append(Contact(first_name=firstname, id=id))
         return contacts
 
 
@@ -97,8 +98,12 @@ class ContactHelper:
 
 
 
-
-
+        # to dziąła
+        # for element in wd.find_elements_by_name("entry"):
+        #     firstname = element.find_elements_by_css_selector("td")
+        #     id = firstname[2].text
+        #     contacts.append(Contact(firstname, id=id))
+        # return contacts
 
 
 
