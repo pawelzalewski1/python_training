@@ -21,6 +21,7 @@ class ContactHelper:
         # submit group creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         self.return_contact_page()
+        self.contact_cache=None
 
     def fill_contact_form(self, contact):
         wd = self.app.wd
@@ -42,6 +43,7 @@ class ContactHelper:
         wd.find_element_by_css_selector("[value=Delete]").click()
         wd.switch_to_alert().accept()
         self.return_contact_page()
+        self.contact_cache = None
 
     def select_first_contact(self):
         wd = self.app.wd
@@ -59,6 +61,7 @@ class ContactHelper:
         wd.find_element_by_name("update").click()
         # self.open_home_page()
         self.return_contact_page
+        self.contact_cache = None
 
     def return_contact_page(self):
         wd = self.app.wd
@@ -68,15 +71,36 @@ class ContactHelper:
         wd = self.app.wd
         return len(wd.find_elements_by_name("selected[]"))
 
+    contact_cache=None
+
     def get_contact_list(self):
-        wd = self.app.wd
-        self.open_contact_page()
-        contacts = []
+        if self.contact_cache is None:
+            wd = self.app.wd
+            self.open_contact_page()
+            self.contact_cache = []
         for element in wd.find_elements_by_name("entry"):
             text = element.text
             id = element.find_element_by_name("selected[]").get_attribute("value")
-            contacts.append(Contact(first_name=text, id=id))
-        return contacts
+            self.contact_cache.append(Contact(first_name=text, id=id))
+        return self.contact_cache
+
+#przed 4.11
+        # def get_contact_list(self):
+        #     wd = self.app.wd
+        #     self.open_contact_page()
+        #     contacts = []
+        #     for element in wd.find_elements_by_name("entry"):
+        #         text = element.text
+        #         id = element.find_element_by_name("selected[]").get_attribute("value")
+        #         contacts.append(Contact(first_name=text, id=id))
+        #     return contacts
+
+
+
+
+
+
+
 
 
         # for element in wd.find_elements_by_css_selector("span.group"):
